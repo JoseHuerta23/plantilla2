@@ -58,33 +58,34 @@ class User(models.Model):
     contasena = models.CharField(max_length=12, null=False)
 
     def __str__(self) -> str:
-        return self.identificador, self.nombre
-    
-# genero=[
+        return self.identificador, self.nombre  
 
-#     ("H","Hombre"),
-#     ("M","Mujer"),
-#     ("NB","No Binario"),
-# ]
-  
+OPCION_GENERO_CHOICE=[
+    [0,'Hombre'],
+    [1,'Mujer'],
+    [2,'No Binario'],
+]
 
-# edoCivil=[
+OPCION_ESTADOCIVIL_CHOIOCE=[
+    [0,'Casado(a)'],
+    [1,'Soltero(a)'],
+    [2,'Viudo(a)'],
+    [3,'Divorciado(a)'],
+]
 
-#     ("H","Hombre"),
-#     ("M","Mujer"),
-#     ("NB","No Binario"),
-# ]
 
 class Extranjeros(models.Model):
+    fechaRegistro = models.DateField(verbose_name="Fecha de Registro")
+    horaRegistro = models.TimeField(verbose_name='Hora de Registro')
     identificador = models.CharField(max_length=10, null=False)
     nombre = models.CharField(max_length=50, null=False)
-    apellidoPat = models.CharField(max_length=50, null=False)
-    apellidoMat = models.CharField(max_length=50, null=False)
+    apellidoPat = models.CharField(verbose_name='Apellido Paterno',  max_length=50, null=False)
+    apellidoMat = models.CharField(verbose_name='Apellido Materno', max_length=50, null=False)
     edad = models.IntegerField(null=False)
     nacionalidad = models.CharField(max_length=50, null=False)
+    genero = models.IntegerField(choices=OPCION_GENERO_CHOICE)
+    estadoCivil = models.IntegerField(choices=OPCION_ESTADOCIVIL_CHOIOCE)
     fecha_nac = models.DateField(verbose_name="Fecha de Nacimiento")
-    fecha_ing = models.DateField(verbose_name="Fecha de Ingreso")
 
     def __str__(self) -> str:
         return self.identificador, self.nombre, self.nacionalidad   
-     
