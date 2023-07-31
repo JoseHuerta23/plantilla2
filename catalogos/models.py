@@ -89,3 +89,4 @@ class Extranjeros(models.Model):
 
     def __str__(self) -> str:
         return self.identificador, self.nombre, self.nacionalidad   
+ #FERNANDO
